@@ -148,8 +148,8 @@ fn rotate270_rmo(img: &Array2<usize>) -> Array2<usize> {
     rotated_img
 }
 
-fn rotate0_rmo(img: &Array2<usize>) -> Array2<usize> {
-    img;
+fn rotate0_rmo(img: Array2<usize>) -> Array2<usize> {
+    img
 }
 
 fn flip_horizontal_rmo(img: &Array2<usize>) -> Array2<usize> {
