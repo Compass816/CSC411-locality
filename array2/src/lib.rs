@@ -39,8 +39,8 @@ impl<T: Clone> Array2<T> {
 
         // fill a vec with elements in column-major order
         let mut data = Vec::with_capacity(width * height);
-        for y in 0..width {
-            for x in 0..height {
+        for y in 0..height {
+            for x in 0..width {
                 let index = y * width + x;
                 data.push(elements[index].clone());
             }
