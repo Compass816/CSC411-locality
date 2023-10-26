@@ -32,22 +32,31 @@ fn main() {
     let width2 = img.width.try_into().unwrap();
 
     // Got to figure out how we're representing RGB
-    let usize_vec: Vec<usize> = img.pixels.iter().map(|rgb| rgb.red as usize).collect();
+    let usize_vec: Vec<Rgb> = img.pixels.clone();
+    
+    //iter().map(|rgb| (rgb.red, rgb.green, rgb.blue)).collect();
     let try_2 = Array2::from_col_major(width2, height2, usize_vec).unwrap();
 
     if let Some(second_arg) = input2 {
         if second_arg == "rotate90" {
             let try_3 = rotate90_rmo(&try_2);
+            let width = try_3.width();
+            let height = try_3.height();
+            let data = try_3.data();
 
-            for (x, y, &element) in try_3.iter_row_major() {
-                println!("x:{}y:{}, {}", x, y, element)
-            }
+            let transformed_img = RgbImage{
+                pixels: try_2.data(),
+                width: try_3.width() as u32,
+                height: try_3.height() as u32,
+                denominator: img.denominator,
+            };
+            RgbImage::write(&transformed_img, None);
         }
     }
 }
 
 
-fn rotate90_rmo(img: &Array2<usize>) -> Array2<usize> {
+fn rotate90_rmo(img: &Array2<Rgb>) -> Array2<Rgb> {
     let mut rotated_img = Array2::blank_state(img.height(), img.width(), 0);
 
     for (x, y, &element) in img.iter_row_major() {
@@ -63,7 +72,7 @@ fn rotate90_rmo(img: &Array2<usize>) -> Array2<usize> {
     rotated_img
 }
 
-fn rotate90_cmo(img: &Array2<usize>) -> Array2<usize> {
+fn rotate90_cmo(img: &Array2<Rgb>) -> Array2<Rgb> {
     let mut rotated_img = Array2::blank_state(img.height(), img.width(), 0);
 
     for (x, y, &element) in img.iter_col_major() {
@@ -79,7 +88,7 @@ fn rotate90_cmo(img: &Array2<usize>) -> Array2<usize> {
     rotated_img
 }
 
-fn rotate180_rmo(img: &Array2<usize>) -> Array2<usize> {
+fn rotate180_rmo(img: &Array2<Rgb>) -> Array2<Rgb> {
     let mut rotated_img = Array2::blank_state(img.width(), img.height(), 0);
 
     for (x, y, &element) in img.iter_row_major() {
@@ -95,7 +104,7 @@ fn rotate180_rmo(img: &Array2<usize>) -> Array2<usize> {
     rotated_img
 }
 
-fn rotate180_cmo(img: &Array2<usize>) -> Array2<usize> {
+fn rotate180_cmo(img: &Array2<Rgb>) -> Array2<Rgb> {
     let mut rotated_img = Array2::blank_state(img.width(), img.height(), 0);
 
     for (x, y, &element) in img.iter_col_major() {
@@ -112,8 +121,8 @@ fn rotate180_cmo(img: &Array2<usize>) -> Array2<usize> {
 }
 
 
-fn rotate270_rmo(img: &Array2<usize>) -> Array2<usize> {
-    let mut rotated_img: Array2<usize> = Array2::blank_state(img.height(), img.width(), 0);
+fn rotate270_rmo(img: &Array2<Rgb>) -> Array2<Rgb> {
+    let mut rotated_img = Array2::blank_state(img.height(), img.width(), 0);
 
     for (x, y, &element) in img.iter_row_major() {
         let rotated_x = y;
@@ -128,8 +137,8 @@ fn rotate270_rmo(img: &Array2<usize>) -> Array2<usize> {
     rotated_img
 }
 
-fn rotate270_cmo(img: &Array2<usize>) -> Array2<usize> {
-    let mut rotated_img: Array2<usize> = Array2::blank_state(img.height(), img.width(), 0);
+fn rotate270_cmo(img: &Array2<Rgb>) -> Array2<Rgb> {
+    let mut rotated_img = Array2::blank_state(img.height(), img.width(), 0);
 
     for (x, y, &element) in img.iter_col_major() {
         let rotated_x = y;
@@ -145,8 +154,8 @@ fn rotate270_cmo(img: &Array2<usize>) -> Array2<usize> {
 }
 
 
-fn rotate0_rmo(img: &Array2<usize>) -> Array2<usize> {
-    let mut rotated_img: Array2<usize> = Array2::blank_state(img.width(), img.height(), 0);
+fn rotate0_rmo(img: &Array2<Rgb>) -> Array2<Rgb> {
+    let mut rotated_img = Array2::blank_state(img.width(), img.height(), 0);
 
     for (x, y, &element) in img.iter_row_major() {
         let rotated_x = x;
@@ -160,8 +169,8 @@ fn rotate0_rmo(img: &Array2<usize>) -> Array2<usize> {
 
     rotated_img
 }
-fn rotate0_cmo(img: &Array2<usize>) -> Array2<usize> {
-    let mut rotated_img: Array2<usize> = Array2::blank_state(img.width(), img.height(), 0);
+fn rotate0_cmo(img: &Array2<Rgb>) -> Array2<Rgb> {
+    let mut rotated_img = Array2::blank_state(img.width(), img.height(), 0);
 
     for (x, y, &element) in img.iter_col_major() {
         let rotated_x = x;
@@ -176,7 +185,7 @@ fn rotate0_cmo(img: &Array2<usize>) -> Array2<usize> {
     rotated_img
 }
 
-fn flip_horizontal_rmo(img: &Array2<usize>) -> Array2<usize> {
+fn flip_horizontal_rmo(img: &Array2<Rgb>) -> Array2<Rgb> {
     let mut flipped_img = Array2::blank_state(img.width(), img.height(), 0);
 
     for (x, y, &element) in img.iter_row_major() {
@@ -191,7 +200,7 @@ fn flip_horizontal_rmo(img: &Array2<usize>) -> Array2<usize> {
     flipped_img
 }
 
-fn flip_horizontal_cmo(img: &Array2<usize>) -> Array2<usize> {
+fn flip_horizontal_cmo(img: &Array2<Rgb>) -> Array2<Rgb> {
     let mut flipped_img = Array2::blank_state(img.width(), img.height(), 0);
 
     for (x, y, &element) in img.iter_col_major() {
@@ -206,7 +215,7 @@ fn flip_horizontal_cmo(img: &Array2<usize>) -> Array2<usize> {
     flipped_img
 }
 
-fn flipped_vertical_rmo(img: &Array2<usize>) -> Array2<usize> {
+fn flipped_vertical_rmo(img: &Array2<Rgb>) -> Array2<Rgb> {
     let mut flipped_img = Array2::blank_state(img.width(), img.height(), 0);
 
     for (x, y, &element) in img.iter_row_major() {
@@ -221,7 +230,7 @@ fn flipped_vertical_rmo(img: &Array2<usize>) -> Array2<usize> {
     flipped_img
 }
 
-fn flipped_vertical_cmo(img: &Array2<usize>) -> Array2<usize> {
+fn flipped_vertical_cmo(img: &Array2<Rgb>) -> Array2<Rgb> {
     let mut flipped_img = Array2::blank_state(img.width(), img.height(), 0);
 
     for (x, y, &element) in img.iter_col_major() {
@@ -236,8 +245,8 @@ fn flipped_vertical_cmo(img: &Array2<usize>) -> Array2<usize> {
     flipped_img
 }
 
-fn transpose_rmo(img: &Array2<usize>) -> Array2<usize> {
-    let mut transposed_img: Array2<usize> = Array2::blank_state(img.width(), img.height(), 0);
+fn transpose_rmo(img: &Array2<Rgb>) -> Array2<Rgb> {
+    let mut transposed_img = Array2::blank_state(img.width(), img.height(), 0);
 
     for (x, y, &element) in img.iter_row_major() {
 
@@ -250,8 +259,8 @@ fn transpose_rmo(img: &Array2<usize>) -> Array2<usize> {
     transposed_img
 }
 
-fn transpose_cmo(img: &Array2<usize>) -> Array2<usize> {
-    let mut transposed_img: Array2<usize> = Array2::blank_state(img.width(), img.height(), 0);
+fn transpose_cmo(img: &Array2<Rgb>) -> Array2<Rgb> {
+    let mut transposed_img = Array2::blank_state(img.width(), img.height(), 0);
 
     for (x, y, &element) in img.iter_col_major() {
 

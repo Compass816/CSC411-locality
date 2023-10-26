@@ -101,4 +101,8 @@ impl<T: Clone> Array2<T> {
     pub fn height(&self) -> usize {
         self.height
     }
+
+    pub fn data(self) -> Vec<T> {
+        self.data
+    }
 }
