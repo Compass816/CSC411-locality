@@ -17,10 +17,10 @@ flip: Option<String>,
 #[clap(short = 'r', long = "rotate")]
 rotate: Option<u32>,
 // Row-Major
-#[clap(short = 'r', long = "row_major")]
+#[clap(long = "row-major")]
 row_major: bool,
 // Col-Major
-#[clap(short = 'r', long = "col_major")]
+#[clap(long = "col-major")]
 col_major: bool,
 // Transposition
 #[clap(long = "transpose")]
@@ -51,9 +51,9 @@ fn main() {
     
     //iter().map(|rgb| (rgb.red, rgb.green, rgb.blue)).collect();
     let try_2 = Array2::from_row_major(width2, height2, usize_vec).unwrap();
-    for (x, y, &ref element) in try_2.iter_row_major(){
+    /*for (x, y, &ref element) in try_2.iter_row_major(){
         println!("{}, {}, {:?}", x, y, element);
-    }
+    }*/
    
  match rotate {
     Some(90) => {
@@ -65,10 +65,8 @@ fn main() {
                 height: result.height() as u32,
                 denominator: 255,
                 pixels: result.data().to_vec(),
-    
-    
             };
-            let _ = RgbImage::write(&image, None);
+            let _ = RgbImage::write(&image, Some("transformed_image"));
 
             // Handle the result if needed
         } else {

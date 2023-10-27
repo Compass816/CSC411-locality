@@ -7,4 +7,5 @@ edition = "2021"
 
 [dependencies]
 array2 = { path = "../array2" }
+clap = { version = "4.4.7", features = ["derive"] }
 csc411_image = "0.3.1"
