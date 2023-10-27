@@ -102,7 +102,7 @@ impl<T: Clone> Array2<T> {
         self.height
     }
 
-    pub fn data(self) -> Vec<T> {
-        self.data
+    pub fn data(&self) -> &Vec<T> {
+        &self.data
     }
 }
