@@ -66,7 +66,7 @@ fn main() {
                 denominator: 255,
                 pixels: result.data().to_vec(),
             };
-            let _ = RgbImage::write(&image, Some("transformed_image"));
+            let _ = RgbImage::write(&image, None);
 
             // Handle the result if needed
         } else {
@@ -91,10 +91,28 @@ fn main() {
         if col_major {
             // Call rotate180_cmo function
             let result = rotate180_cmo(&try_2);
+            let image = RgbImage {
+                width: result.width() as u32,
+                height: result.height() as u32,
+                denominator: 255,
+                pixels: result.data().to_vec(),
+    
+    
+            };
+            let _ = RgbImage::write(&image, None);
             // Handle the result if needed
         } else {
             // Call rotate180_rmo function
             let result = rotate180_rmo(&try_2);
+            let image = RgbImage {
+                width: result.width() as u32,
+                height: result.height() as u32,
+                denominator: 255,
+                pixels: result.data().to_vec(),
+    
+    
+            };
+            let _ = RgbImage::write(&image, None);
             // Handle the result if needed
         }
     }
@@ -103,6 +121,13 @@ fn main() {
         if col_major {
             // Call rotate180_cmo function
             let result: Array2<Rgb> = rotate270_cmo(&try_2);
+            let image = RgbImage {
+                width: result.width() as u32,
+                height: result.height() as u32,
+                denominator: 255,
+                pixels: result.data().to_vec(),
+            };
+            let _ = RgbImage::write(&image, None);
             // Handle the result if needed
         } else {
             // Call rotate180_rmo function
@@ -113,7 +138,35 @@ fn main() {
                 denominator: 255,
                 pixels: result.data().to_vec(),
             };
-            RgbImage::write(&image, None);
+            let _ = RgbImage::write(&image, None);
+
+            // Handle the result if needed
+        }
+
+    }
+
+    Some(0) => {
+        if col_major {
+            // Call rotate180_cmo function
+            let result: Array2<Rgb> = rotate0_cmo(&try_2);
+            let image = RgbImage {
+                width: result.width() as u32,
+                height: result.height() as u32,
+                denominator: 255,
+                pixels: result.data().to_vec(),
+            };
+            let _ = RgbImage::write(&image, None);
+            // Handle the result if needed
+        } else {
+            // Call rotate180_rmo function
+            let result = rotate0_rmo(&try_2);
+            let image = RgbImage {
+                width: result.width() as u32,
+                height: result.height() as u32,
+                denominator: 255,
+                pixels: result.data().to_vec(),
+            };
+            let _ = RgbImage::write(&image, None);
 
             // Handle the result if needed
         }
