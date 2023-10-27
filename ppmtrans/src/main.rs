@@ -5,7 +5,7 @@ use std::env;
 use std::process;
 
 
-
+// CLAP command line struc
 use clap::Parser;
 #[derive(Parser, Debug)]
 #[clap(author, version, about, long_about = None)]
@@ -31,6 +31,7 @@ filename: Option<String>,
 
 
 fn main() {
+    //parse args and set values
     let args = Args::parse();
     let rotate = args.rotate;
     let filename = args.filename;
@@ -39,7 +40,7 @@ fn main() {
     let col_major = args.col_major;
     let flip = args.flip;
 
-
+// set rgb image with th filename 
     let img = RgbImage ::read(filename.as_deref()).unwrap();
    
     // get our values from grayimage to the correct types for our structure
@@ -54,7 +55,7 @@ fn main() {
     /*for (x, y, &ref element) in try_2.iter_row_major(){
         println!("{}, {}, {:?}", x, y, element);
     }*/
-   
+   // match case for rotate 
  match rotate {
     Some(90) => {
         if col_major {
@@ -66,9 +67,9 @@ fn main() {
                 denominator: 255,
                 pixels: result.data().to_vec(),
             };
+            // write transformed image
             let _ = RgbImage::write(&image, None);
 
-            // Handle the result if needed
         } else {
             // Call rotate90_rmo function
             let result = rotate90_rmo(&try_2);
@@ -82,11 +83,10 @@ fn main() {
             };
             let _ = RgbImage::write(&image, None);
 
-            // Handle the result if needed
         }
         
 
-}
+} // check for 180
     Some(180) => {
         if col_major {
             // Call rotate180_cmo function
@@ -113,10 +113,9 @@ fn main() {
     
             };
             let _ = RgbImage::write(&image, None);
-            // Handle the result if needed
         }
     }
-    // Add more cases for other rotation angles if needed
+    // check for 270
     Some(270) => {
         if col_major {
             // Call rotate180_cmo function
@@ -128,7 +127,6 @@ fn main() {
                 pixels: result.data().to_vec(),
             };
             let _ = RgbImage::write(&image, None);
-            // Handle the result if needed
         } else {
             // Call rotate180_rmo function
             let result = rotate270_rmo(&try_2);
@@ -140,11 +138,10 @@ fn main() {
             };
             let _ = RgbImage::write(&image, None);
 
-            // Handle the result if needed
         }
 
     }
-
+// check for 0
     Some(0) => {
         if col_major {
             // Call rotate180_cmo function
@@ -156,7 +153,6 @@ fn main() {
                 pixels: result.data().to_vec(),
             };
             let _ = RgbImage::write(&image, None);
-            // Handle the result if needed
         } else {
             // Call rotate180_rmo function
             let result = rotate0_rmo(&try_2);
@@ -168,7 +164,6 @@ fn main() {
             };
             let _ = RgbImage::write(&image, None);
 
-            // Handle the result if needed
         }
 
     }
