@@ -1,0 +1,10 @@
+C:\Users\brook\Documents\Workspaces\CSC 411\GitHub\locality\ppmtrans\target\release\deps\anstyle_wincon-7f6189c97a956540.rmeta: C:\Users\brook\.cargo\registry\src\index.crates.io-6f17d22bba15001f\anstyle-wincon-3.0.1\src\lib.rs C:\Users\brook\.cargo\registry\src\index.crates.io-6f17d22bba15001f\anstyle-wincon-3.0.1\src\ansi.rs C:\Users\brook\.cargo\registry\src\index.crates.io-6f17d22bba15001f\anstyle-wincon-3.0.1\src\stream.rs C:\Users\brook\.cargo\registry\src\index.crates.io-6f17d22bba15001f\anstyle-wincon-3.0.1\src\windows.rs
+
+C:\Users\brook\Documents\Workspaces\CSC 411\GitHub\locality\ppmtrans\target\release\deps\libanstyle_wincon-7f6189c97a956540.rlib: C:\Users\brook\.cargo\registry\src\index.crates.io-6f17d22bba15001f\anstyle-wincon-3.0.1\src\lib.rs C:\Users\brook\.cargo\registry\src\index.crates.io-6f17d22bba15001f\anstyle-wincon-3.0.1\src\ansi.rs C:\Users\brook\.cargo\registry\src\index.crates.io-6f17d22bba15001f\anstyle-wincon-3.0.1\src\stream.rs C:\Users\brook\.cargo\registry\src\index.crates.io-6f17d22bba15001f\anstyle-wincon-3.0.1\src\windows.rs
+
+C:\Users\brook\Documents\Workspaces\CSC 411\GitHub\locality\ppmtrans\target\release\deps\anstyle_wincon-7f6189c97a956540.d: C:\Users\brook\.cargo\registry\src\index.crates.io-6f17d22bba15001f\anstyle-wincon-3.0.1\src\lib.rs C:\Users\brook\.cargo\registry\src\index.crates.io-6f17d22bba15001f\anstyle-wincon-3.0.1\src\ansi.rs C:\Users\brook\.cargo\registry\src\index.crates.io-6f17d22bba15001f\anstyle-wincon-3.0.1\src\stream.rs C:\Users\brook\.cargo\registry\src\index.crates.io-6f17d22bba15001f\anstyle-wincon-3.0.1\src\windows.rs
+
+C:\Users\brook\.cargo\registry\src\index.crates.io-6f17d22bba15001f\anstyle-wincon-3.0.1\src\lib.rs:
+C:\Users\brook\.cargo\registry\src\index.crates.io-6f17d22bba15001f\anstyle-wincon-3.0.1\src\ansi.rs:
+C:\Users\brook\.cargo\registry\src\index.crates.io-6f17d22bba15001f\anstyle-wincon-3.0.1\src\stream.rs:
+C:\Users\brook\.cargo\registry\src\index.crates.io-6f17d22bba15001f\anstyle-wincon-3.0.1\src\windows.rs:
